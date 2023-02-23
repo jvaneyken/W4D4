@@ -3,8 +3,19 @@ require 'rspec'
 
 describe Array do
     describe '#uniq' do
+        subject(:array) {[1, 2, 1, 3, 3]}
         it 'returns an array' do
-            expect([1, 2, 1, 3, 3].uniq).to be_a_kind_of(Array)
+            expect(array.uniq).to be_a_kind_of(Array)
+        end
+
+        it 'returns unique array' do
+            #if length of array == 3 after calling .uniq
+            arr_length = array.uniq.length
+            expect(arr_length).to eq(3)
+        end
+
+        it 'returns in the order in which they first appeared' do
+            expect(array.uniq).to eq([1, 2, 3])
         end
     end
 end
